@@ -23,10 +23,11 @@ class Board { //<>//
     }
   }
   void init() {
+    PImage[] images = processImage(imagePath);
     this.blocks = new Block[this.size * this.size];
     int idx;
     for (idx = 0; idx < this.size * this.size - 1; ++idx) {
-      this.blocks[idx] = new Block(idx, w);
+      this.blocks[idx] = new Block(idx, w, images[idx]);
     }
     this.blocks[idx] = null;
   }
@@ -96,7 +97,7 @@ class Board { //<>//
   }
 
   void show() {
-    background(255);
+    background(220, 220, 220);
     for (Block block : this.blocks) {
       if (block != null) {
         block.show();
